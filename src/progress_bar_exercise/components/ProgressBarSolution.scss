@@ -1,0 +1,90 @@
+@import "../../shared_styles/colors.scss";
+
+.progress-bar-container {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  position: absolute;
+}
+
+.progress-bar {
+  width: 0%;
+  opacity: 1;
+  height: 100%;
+  background-image: linear-gradient(to right, $sunset, $red);
+
+  .active & {
+    width: 90%;
+    transition: width 15s ease;
+  }
+
+  .ended & {
+    opacity: 0;
+    width: 100%;
+    transition: width 1s ease 0s, opacity 0.5s ease 4s;
+  }
+}
+
+.buttons-container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.button {
+  min-width: 140px;
+  line-height: 30px;
+  padding: 0 20px;
+  border-radius: 20px;
+  border-width: 1px;
+  border-style: solid;
+  background-color: white;
+}
+
+.finish-request {
+  color: $gray-light;
+  border-color: $gray-light;
+  pointer-events: none;
+
+  .active & {
+    color: $white;
+    border: $red 1px solid;
+    background-color: $red;
+    transition: all 0.2s ease;
+    pointer-events: auto;
+
+    &:hover {
+      border-color: darken($red, 10%);
+      background-color: darken($red, 10%);
+    }
+  }
+}
+
+.start-request {
+  color: $green;
+  pointer-events: auto;
+  border: 1px solid $green;
+
+  &:hover {
+    border-width: 2px;
+  }
+
+  &:active {
+    border-width: 3px;
+  }
+
+  .active & {
+    color: $gray-light;
+    border-color: $gray-light;
+    pointer-events: none;
+  }
+
+  .ended & {
+    color: $green;
+    border-color: $green;
+    transition: all 1s ease 3.5s;
+    pointer-events: none;
+  }
+}
