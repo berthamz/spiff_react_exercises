@@ -3,7 +3,6 @@ import "./ProgressBarSolution.scss";
 
 const ProgressBarSolution = () => {
   const [status, setStatus] = React.useState("idle");
-  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
     if (status === "ended") {
@@ -19,12 +18,10 @@ const ProgressBarSolution = () => {
 
   const startRequest = () => {
     setStatus("active");
-    setIsLoading(true);
   };
 
   const endRequest = () => {
     setStatus("ended");
-    setIsLoading(false);
   };
 
   return (
@@ -34,7 +31,7 @@ const ProgressBarSolution = () => {
       </div>
       <div className="buttons-container">
         <button className="button start-request" onClick={startRequest}>
-          {isLoading ? "Loading..." : "Start Request"}
+          {status === "active" ? "Loading..." : "Start Request"}
         </button>
         <button className="button finish-request" onClick={endRequest}>
           Finish Request
