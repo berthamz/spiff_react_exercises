@@ -37,8 +37,6 @@ const ProgressBarSolution = () => {
     }
   }, [status, addBreakpoints, breakpoint]);
 
-  console.log(breakpoint);
-
   const startRequest = () => {
     if (addBreakpoints) {
       setBreakpoint(0);
